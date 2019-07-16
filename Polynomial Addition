@@ -1,0 +1,36 @@
+class GFG
+{
+    public static void addPolynomial(Node p1,Node p2)
+    {
+        String result="";
+        while(p1!=null&&p2!=null)
+            {
+                if(p1.pow==p2.pow)
+                    {
+                        result = result +Integer.toString(p1.coeff+p2.coeff)+"x^"+Integer.toString(p1.pow)+" + ";
+                        p1=p1.next;
+                        p2=p2.next;
+                    }
+                else if(p1.pow<p2.pow)
+                    {
+                        result = result +Integer.toString(p2.coeff)+"x^"+Integer.toString(+p2.pow)+" + ";
+                        p2=p2.next;
+                    }
+                else{
+                        result = result +Integer.toString(p1.coeff)+"x^"+Integer.toString(p1.pow)+" + ";
+                        p1=p1.next;
+                }
+            }
+        while(p1!=null)
+            {
+                result = result +Integer.toString(p1.coeff)+"x^"+Integer.toString(p1.pow)+" + ";
+                p1=p1.next;
+            }
+        while(p2!=null)
+            {
+                result = result +Integer.toString(p2.coeff)+"x^"+Integer.toString(p2.pow)+" + ";
+                p2=p2.next;
+            }
+        System.out.print(result.substring(0, result.length()-3));
+    }
+}
