@@ -1,0 +1,29 @@
+class GfG
+{   
+    void modify(Node root)
+    {
+        List<Integer> list = new ArrayList<>();
+        inOrder(root, list);
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(list.get(list.size()-1), list.get(list.size()-1));
+        for(int i=list.size()-2; i>=0; i--)
+            {
+                map.put(list.get(i), map.get(list.get(i+1))+list.get(i));
+            }
+        mod(root, map);
+    }
+    public void mod(Node root, Map<Integer, Integer> map)
+        {
+            if(root==null)  return;
+            root.data = map.get(new Integer(root.data));
+            mod(root.left, map);
+            mod(root.right, map);
+        }
+    public void inOrder(Node node, List<Integer> list)
+        {
+            if(node==null)  return;
+            inOrder(node.left,  list);
+            list.add(node.data);
+            inOrder(node.right, list);
+        }
+}
