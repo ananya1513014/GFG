@@ -1,0 +1,21 @@
+class Traversal
+{
+    static void bfs(int s, ArrayList<ArrayList<Integer>> list, boolean vis[])
+    {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(s);
+        Traversal.bbfs(queue, s, list, vis);
+    }
+    
+    static void bbfs(Queue<Integer> queue, int s, ArrayList<ArrayList<Integer>> list, boolean vis[])
+        {
+            while(queue.size()!=0)
+            {
+            int x = queue.poll();
+            if(vis[x])  continue;
+            vis[x]=true;
+            System.out.print(x+" ");
+            queue.addAll(list.get(x));
+            }
+        }
+}
