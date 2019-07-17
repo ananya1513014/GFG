@@ -1,0 +1,20 @@
+class Traversal
+{
+    static void dfs(int src, ArrayList<ArrayList<Integer>> list, boolean vis[])
+    {
+        Stack<Integer> stack = new Stack<>();
+        stack.add(src);
+        Traversal.ddfs(stack, src, list, vis);
+    }
+    static void ddfs(Stack<Integer> stack, int src, ArrayList<ArrayList<Integer>> list, boolean vis[])
+        {
+            while(stack.size()!=0)
+                {
+                    int x = stack.pop();
+                    if(vis[x])  continue;
+                    vis[x]=true;
+                    System.out.println(x+" "+list.get(x));
+                    stack.addAll(list.get(x));
+                }
+        }
+}
